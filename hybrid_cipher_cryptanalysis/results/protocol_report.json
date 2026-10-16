@@ -1,0 +1,292 @@
+{
+  "mode": "full",
+  "seed": 20261013,
+  "trials": 10000,
+  "chaos_audit": [
+    {
+      "case": "locked params (mu=3.99, perturbed)",
+      "mu": 3.99,
+      "x0": 0.5,
+      "epsilon": 1e-06,
+      "cycle_length": null,
+      "iterations_used": 10000000,
+      "cycle_detected": false
+    },
+    {
+      "case": "unperturbed (epsilon=0)",
+      "mu": 3.99,
+      "x0": 0.5,
+      "epsilon": 0.0,
+      "cycle_length": null,
+      "iterations_used": 10000000,
+      "cycle_detected": false
+    },
+    {
+      "case": "alternate x0",
+      "mu": 3.99,
+      "x0": 0.123456789,
+      "epsilon": 1e-06,
+      "cycle_length": null,
+      "iterations_used": 10000000,
+      "cycle_detected": false
+    },
+    {
+      "case": "weaker chaos (mu=3.7, perturbed)",
+      "mu": 3.7,
+      "x0": 0.5,
+      "epsilon": 1e-06,
+      "cycle_length": 3000000,
+      "iterations_used": 7194303,
+      "cycle_detected": true
+    }
+  ],
+  "ddt_max": [
+    128,
+    128,
+    1.0
+  ],
+  "mc_a_differential": {
+    "2": {
+      "trials": 10000,
+      "mismatches": 0
+    },
+    "4": {
+      "trials": 10000,
+      "mismatches": 0
+    },
+    "6": {
+      "trials": 10000,
+      "mismatches": 0
+    },
+    "8": {
+      "trials": 10000,
+      "mismatches": 0
+    },
+    "10": {
+      "trials": 10000,
+      "mismatches": 0
+    },
+    "12": {
+      "trials": 10000,
+      "mismatches": 0
+    },
+    "14": {
+      "trials": 10000,
+      "mismatches": 0
+    },
+    "16": {
+      "trials": 10000,
+      "mismatches": 0
+    }
+  },
+  "mc_a_independence": {
+    "trials": 10000,
+    "mismatches": 0
+  },
+  "mc_a_linear_cases": 160,
+  "mc_b_differential": {
+    "2": {
+      "trials": 10000,
+      "mean_weight": 15.209,
+      "weight1_rate": 0.028
+    },
+    "4": {
+      "trials": 10000,
+      "mean_weight": 31.0222,
+      "weight1_rate": 0.0
+    },
+    "6": {
+      "trials": 10000,
+      "mean_weight": 31.9772,
+      "weight1_rate": 0.0
+    },
+    "8": {
+      "trials": 10000,
+      "mean_weight": 32.048,
+      "weight1_rate": 0.0
+    },
+    "10": {
+      "trials": 10000,
+      "mean_weight": 32.0202,
+      "weight1_rate": 0.0
+    },
+    "12": {
+      "trials": 10000,
+      "mean_weight": 31.9658,
+      "weight1_rate": 0.0
+    }
+  },
+  "mc_b_linear": {
+    "1": {
+      "trials": 10000,
+      "corr_L": -0.03280000000000005
+    },
+    "2": {
+      "trials": 10000,
+      "corr_L": 0.01419999999999999
+    },
+    "4": {
+      "trials": 10000,
+      "corr_L": -0.0046000000000000485
+    },
+    "8": {
+      "trials": 10000,
+      "corr_L": 0.0043999999999999595
+    },
+    "12": {
+      "trials": 10000,
+      "corr_L": -0.0016000000000000458
+    }
+  },
+  "benchmark": [
+    {
+      "cipher": "DES-16",
+      "model": "differential",
+      "log2_data": 47,
+      "log2_exhaustive": 56,
+      "source": "Biham & Shamir 1991",
+      "bits_attack_beats_exhaustive": 9
+    },
+    {
+      "cipher": "DES-16",
+      "model": "linear",
+      "log2_data": 43,
+      "log2_exhaustive": 56,
+      "source": "Matsui 1993/1994",
+      "bits_attack_beats_exhaustive": 13
+    },
+    {
+      "cipher": "RC5-32/12",
+      "model": "differential",
+      "log2_data": 44,
+      "log2_exhaustive": 128,
+      "source": "Biryukov & Kushilevitz 1998",
+      "bits_attack_beats_exhaustive": 84
+    },
+    {
+      "cipher": "RC5-32 6 rounds",
+      "model": "linear (claimed, later disputed)",
+      "log2_data": 57,
+      "log2_exhaustive": 128,
+      "source": "Kaliski & Yin 1995; gaps per Selcuk",
+      "bits_attack_beats_exhaustive": 71
+    },
+    {
+      "cipher": "Construction A (all rounds 2-16)",
+      "model": "differential",
+      "log2_data": 0,
+      "log2_exhaustive": 128,
+      "source": "Stage 5",
+      "bits_attack_beats_exhaustive": 128
+    },
+    {
+      "cipher": "Construction A (all rounds 2-16)",
+      "model": "linear",
+      "log2_data": 0,
+      "log2_exhaustive": 128,
+      "source": "Stage 5",
+      "bits_attack_beats_exhaustive": 128
+    },
+    {
+      "cipher": "Construction B (2 rounds)",
+      "model": "differential",
+      "log2_data": 5.2,
+      "log2_exhaustive": 128,
+      "source": "Stage 5",
+      "bits_attack_beats_exhaustive": 122.8
+    }
+  ],
+  "checks": [
+    {
+      "check": "A test vector (Stage 1)",
+      "pass": true,
+      "detail": "61c966a48bf60886bb6f7e7310bc801b"
+    },
+    {
+      "check": "A Feistel round-trip (200 blocks)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "B locked chaotic key (Stage 1)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "B RC5-core round-trip (200 blocks)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "chaos: locked params, no cycle within budget",
+      "pass": true,
+      "detail": "budget 10,000,000"
+    },
+    {
+      "check": "chaos: mu=3.7 collapses to a cycle (audit method works)",
+      "pass": true,
+      "detail": "3000000"
+    },
+    {
+      "check": "DDT rows sum to 65536",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "DDT: only prob-1 differential is 0x80->0x80",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "LAT: only |corr|=1 nontrivial entry is 0x01->0x01",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "addition DP == brute-force DDT (n=8, 65536 pairs)",
+      "pass": true,
+      "detail": "0 mismatches"
+    },
+    {
+      "check": "n=32 MSB identity EDP=1; LSB differential EDP=0.5",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "A differential trail: prob exactly 1 (single-path and exact Markov), rounds 2-16",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "A differential MC: 0 mismatches at every round count",
+      "pass": true,
+      "detail": "10000 trials/round"
+    },
+    {
+      "check": "A byte-lane independence (2 active lanes)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "A linear trail: predicted constant bit holds in every trial, all keys/rounds",
+      "pass": true,
+      "detail": "160 key/round cases"
+    },
+    {
+      "check": "B differential: 2-round signal present, saturated to random by 4 rounds",
+      "pass": true,
+      "detail": "2r mean=15.2"
+    },
+    {
+      "check": "B linear: no correlation beyond sampling noise",
+      "pass": true,
+      "detail": "tol 0.050"
+    },
+    {
+      "check": "benchmark table built",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "seconds": 24.6
+}

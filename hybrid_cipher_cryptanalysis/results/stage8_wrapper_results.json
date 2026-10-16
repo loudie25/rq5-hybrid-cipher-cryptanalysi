@@ -1,0 +1,21 @@
+{
+ "no wrapper": {
+  "hits": 83,
+  "pairs": 4194304,
+  "p": 1.9788742065429688e-05,
+  "log2": -15.624960568653075
+ },
+ "wrapper, attacker knows permutation": {
+  "hits": 97,
+  "pairs": 4194304,
+  "p": 2.3126602172851562e-05,
+  "log2": -15.400087157812873
+ },
+ "wrapper, attacker ignores it": {
+  "hits": 0,
+  "pairs": 4194304,
+  "p": 0.0,
+  "log2": null
+ },
+ "candidates_for_two_active_bytes": 56
+}

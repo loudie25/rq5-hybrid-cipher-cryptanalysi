@@ -1,0 +1,54 @@
+# RQ5 cross-platform leg. Each platform writes the SHA-256 of the locked 10^6-value Logistic stream
+# from the Python and Node.js (V8) implementations; the compare job requires every hash to match.
+name: rq5-cross-platform
+on: workflow_dispatch
+jobs:
+  stream:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-24.04, arch: x86_64}
+          - {os: ubuntu-24.04-arm, arch: aarch64}
+          - {os: macos-14, arch: arm64}
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.10"}
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - name: Install Python dependencies
+        run: pip install -r hybrid_cipher_cryptanalysis/requirements.txt
+      - name: Python stream and hash
+        working-directory: hybrid_cipher_cryptanalysis
+        run: python rq5_stream_hash.py "$GITHUB_WORKSPACE/py_${{ matrix.arch }}.txt"
+      - name: Node (V8) stream and hash
+        working-directory: hybrid_cipher_cryptanalysis
+        run: node env3_node/logistic.js 1000000 "$GITHUB_WORKSPACE/node_${{ matrix.arch }}.txt"
+      - name: Hash outputs
+        run: shasum -a 256 py_${{ matrix.arch }}.txt node_${{ matrix.arch }}.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stream-${{ matrix.arch }}
+          path: |
+            py_${{ matrix.arch }}.txt
+            node_${{ matrix.arch }}.txt
+  compare:
+    needs: stream
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v4
+        with: {path: streams}
+      - name: Require identical streams on every platform
+        run: |
+          set -euo pipefail
+          for kind in py node; do
+            h1=$(shasum -a 256 streams/stream-x86_64/${kind}_x86_64.txt | cut -d' ' -f1)
+            h2=$(shasum -a 256 streams/stream-aarch64/${kind}_aarch64.txt | cut -d' ' -f1)
+            h3=$(shasum -a 256 streams/stream-arm64/${kind}_arm64.txt | cut -d' ' -f1)
+            if [ "$h1" != "$h2" ] || [ "$h2" != "$h3" ]; then
+              echo "$kind: MISMATCH x86_64=$h1 aarch64=$h2 arm64=$h3"; exit 1
+            fi
+            echo "$kind: IDENTICAL across x86_64, aarch64, arm64 ($h1)"
+          done

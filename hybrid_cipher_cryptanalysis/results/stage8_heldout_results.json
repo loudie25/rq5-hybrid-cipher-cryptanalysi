@@ -1,0 +1,82 @@
+[
+ {
+  "rounds": 2,
+  "start": [
+   "0x0",
+   "0x20"
+  ],
+  "target": [
+   "0x20",
+   "0x800"
+  ],
+  "heldout_mean_log2": -15.154509949055624,
+  "heldout_min_log2": null,
+  "heldout_max_log2": -14.860448647601206,
+  "dp_max_log2": -14.11735695063816,
+  "discovery_log2": -9.959710278974283
+ },
+ {
+  "rounds": 3,
+  "start": [
+   "0x20",
+   "0x20"
+  ],
+  "target": [
+   "0x800000",
+   "0x8000"
+  ],
+  "heldout_mean_log2": -15.250968617959796,
+  "heldout_min_log2": -16.0,
+  "heldout_max_log2": -14.27548614688005,
+  "dp_max_log2": -15.090106916229958,
+  "discovery_log2": -10.929040523072434
+ },
+ {
+  "rounds": 3,
+  "start": [
+   "0x1",
+   "0x0"
+  ],
+  "target": [
+   "0x200",
+   "0x3000"
+  ],
+  "heldout_mean_log2": -19.087110663770037,
+  "heldout_min_log2": -20.830074998557688,
+  "heldout_max_log2": -17.955605880641546,
+  "dp_max_log2": -15.090106916229958,
+  "discovery_log2": -13.0
+ },
+ {
+  "rounds": 4,
+  "start": [
+   "0x20",
+   "0x20"
+  ],
+  "target": [
+   "0x0",
+   "0x10000000"
+  ],
+  "heldout_mean_log2": -15.033855086654398,
+  "heldout_min_log2": -15.631493538492307,
+  "heldout_max_log2": -14.2568486058875,
+  "dp_max_log2": -15.348948308821072,
+  "discovery_log2": -14.868143039391207
+ },
+ {
+  "rounds": 4,
+  "start": [
+   "0x0",
+   "0x400"
+  ],
+  "target": [
+   "0x100600",
+   "0x100e000"
+  ],
+  "heldout_mean_log2": null,
+  "heldout_min_log2": null,
+  "heldout_max_log2": null,
+  "dp_max_log2": -19.8841841487979,
+  "discovery_log2": -15.022720076500084
+ }
+]
