@@ -1,0 +1,32 @@
+{
+  "source": "Stage 5 Construction B linear run (Project file claude/phase2_stage5_construction_b_linear_results.json)",
+  "key_hex": "e169fd0a29878786870a4b01c3d2e7f8",
+  "trials_per_round_count": 10000,
+  "statistic": "corr_L_out: correlation of the whitening-stage LSB identity on the left output",
+  "results_by_round_count": {
+    "1": {
+      "corr_L_out": -0.04059999999999997
+    },
+    "2": {
+      "corr_L_out": -0.016199999999999992
+    },
+    "3": {
+      "corr_L_out": 0.0020000000000000018
+    },
+    "4": {
+      "corr_L_out": -0.012199999999999989
+    },
+    "6": {
+      "corr_L_out": -0.009199999999999986
+    },
+    "8": {
+      "corr_L_out": -0.022399999999999975
+    },
+    "10": {
+      "corr_L_out": 0.011400000000000077
+    },
+    "12": {
+      "corr_L_out": 0.0014000000000000679
+    }
+  }
+}
